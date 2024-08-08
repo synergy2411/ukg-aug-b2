@@ -4,4 +4,7 @@ import com.synergybank.accounts.dto.CustomerDto;
 
 public interface IAccountService {
     void createAccount(CustomerDto customerDto);
+
+
+    CustomerDto fetchDetails(String mobileNumber);
 }
