@@ -1,0 +1,11 @@
+build:
+  version: "1.0"
+
+loans:
+  message: "Hey, welcome to SynergyBank loans related prod APIs "
+  contactDetails:
+    name: "Joey - Product Owner"
+    email: "joey@synergybank.com"
+  onCallSupport:
+    - (723) 656-8709
+    - (156) 342-0956

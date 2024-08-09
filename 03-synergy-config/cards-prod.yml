@@ -1,0 +1,11 @@
+build:
+  version: "1.0"
+
+cards:
+  message: "Hey, welcome to SynergyBank cards related prod APIs"
+  contactDetails:
+    name: "Rachel Green - Product Owner"
+    email: "rachel@synergybank.com"
+  onCallSupport:
+    - (617) 432-2356
+    - (936) 564-8721
