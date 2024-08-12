@@ -1,5 +1,6 @@
 package com.synergybank.accounts.mapper;
 
+import com.synergybank.accounts.dto.CustomerDetailsDto;
 import com.synergybank.accounts.dto.CustomerDto;
 import com.synergybank.accounts.entity.Customer;
 
@@ -17,6 +18,13 @@ public class CustomerMapper {
         customerDto.setEmail(customer.getEmail());
         customerDto.setMobileNumber(customer.getMobileNumber());
         return customerDto;
+    }
+
+    public static CustomerDetailsDto mapToCustomerDetailsDto(Customer customer, CustomerDetailsDto customerDetailsDto){
+        customerDetailsDto.setName(customer.getName());
+        customerDetailsDto.setEmail(customer.getEmail());
+        customerDetailsDto.setMobileNumber(customer.getMobileNumber());
+        return customerDetailsDto;
     }
 
 
