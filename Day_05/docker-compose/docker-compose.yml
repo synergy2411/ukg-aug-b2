@@ -1,0 +1,40 @@
+services:
+  configserver:
+    image: khandelwalsumit/config-server:1.0.0
+    container_name: "configserver"
+    ports:
+      - "8071:8071"
+    deploy:
+      resources:
+        limits:
+          memory: 700m
+    healthcheck:
+      test: "curl --fail --silent localhost:8071/actuator/health/readiness | grep UP || exit 1"
+      start_period: 5s
+      interval: 5s
+      timeout: 10s
+      retries: 5
+    networks:
+      - synergybank
+
+
+  accounts:
+    image: khandelwalsumit/accounts:1.0.0
+    container_name: "accounts"
+    ports:
+      - "8080:8080"
+    deploy:
+      resources:
+        limits:
+          memory: 700m
+    depends_on:
+      configserver:
+        condition: service_healthy
+    environment:
+      SPRING_CONFIG_IMPORT: "configserver:http://configserver:8071/"
+    networks:
+      - synergybank
+
+networks:
+  synergybank:
+    driver: "bridge"

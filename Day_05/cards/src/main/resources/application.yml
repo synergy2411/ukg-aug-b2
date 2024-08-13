@@ -1,0 +1,44 @@
+server:
+  port: 8090
+spring:
+  application:
+    name: cards
+  config:
+    import: "optional:configserver:http://localhost:8071"
+  datasource:
+    url: jdbc:h2:mem:testdb
+    username: sa
+    password: ""
+    driverClassName: org.h2.Driver
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.H2Dialect
+  h2:
+    console:
+      enabled: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  info:
+    env:
+      enabled: true
+
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    fetchRegistry: true
+    registerWithEureka : true
+    serviceUrl:
+      defaultZone: "http://localhost:8070/eureka/"
+
+info:
+  app:
+    name: "Cards MS"
+    description: "Card MS for Synergy Bank"
+    version : "1.0.0"

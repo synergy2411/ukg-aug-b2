@@ -49,6 +49,7 @@
     "Application.EurekaServerApplication.executor": "Debug",
     "Application.LoansApplication.executor": "Debug",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "settings.editor.selected.configurable": "editor.preferences.fonts.default"
