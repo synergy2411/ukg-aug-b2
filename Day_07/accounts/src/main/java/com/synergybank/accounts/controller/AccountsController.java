@@ -12,19 +12,22 @@ import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping(value = "/api")
 //@AllArgsConstructor
 @Tag(
         name = "Accounts Controller",
         description = "Accounts controller for Synergy Bank"
 )
 @Validated
+
 public class AccountsController {
 
     @Value("${build.version}")
@@ -44,7 +47,7 @@ public class AccountsController {
             responseCode = "201",
             description = "Accounts successfully created"
     )
-    @PostMapping("/create")
+    @PostMapping(value = "/create", consumes = {"*/*"})
     public ResponseEntity<ResponseDto> createAccounts(@RequestBody @Valid CustomerDto customerDto) {
         iAccountService.createAccount(customerDto);
         return ResponseEntity.status(HttpStatus.CREATED)

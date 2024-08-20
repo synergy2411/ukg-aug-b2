@@ -3,12 +3,24 @@ spring:
     name: "gatewayserver"
   config:
     import: "optional:configserver:http://localhost:8071/"
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: "http://localhost:7080/realms/demo-realm/protocol/openid-connect/certs"
   cloud:
     gateway:
       discovery:
         locator:
           enabled: true
           lowerCaseServiceId: true
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods: "*"
+            allowedHeaders: "*"
+
 management:
   endpoints:
     web:
